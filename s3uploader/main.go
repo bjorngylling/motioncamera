@@ -14,7 +14,7 @@ func init() {
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 }
 
-// Expects a two arguments, the name of the bucket and the path to the file to upload to the s3 bucket
+// Expects two arguments, the name of the bucket and the path to the file to upload to the s3 bucket
 func main() {
 	if len(os.Args) != 3 {
 		log.Fatalf("bucket and file name required. Usage: %s <bucket_name> <filename>", os.Args[0])
@@ -38,8 +38,8 @@ func main() {
 
 	_, err = uploader.Upload(&s3manager.UploadInput{
 		Bucket: aws.String(bucket),
-		Key: aws.String(filename),
-		Body: file,
+		Key: 	aws.String(filename),
+		Body: 	file,
 	})
 	if err != nil {
 		log.Fatalf("unable to upload %q to %q, %v", filename, bucket, err)
